@@ -1,44 +1,36 @@
-// Dados de exemplo — substitui por API/BD quando quiseres.
+// Dados estáticos (tipos, classes) + dados de exemplo opcionais. Os dados reais de cada utilizador ficam em localStorage.
 const DATA = {
-  resumoMes: { entradas: 17400000, saidas: 4820000, variacao: 8.4 },
-  totalRegistos: 48,
-  movimentos: [
-    { id: 1, titulo: "Cupão OT-NR 2027", entidade: "Grupo Atlântico S.A.", tipo: "rendimento", estado: "Liquidado", data: "Hoje, 09:42", valor: 2400000, icon: "payments" },
-    { id: 2, titulo: "Aporte de Tesouraria", entidade: "Plantio Café Kwanza", tipo: "entrada", estado: "Concluído", data: "22 Out 2024", valor: 15000000, icon: "account_balance" },
-    { id: 3, titulo: "Comissão de Custódia BODIVA", entidade: "BFA Gestão de Ativos", tipo: "despesa", estado: "Debitado", data: "21 Out 2024", valor: -350000, icon: "receipt_long" },
-    { id: 4, titulo: "Renda Edifício Luanda Sul", entidade: "Talatona Corporate", tipo: "rendimento", estado: "Creditado", data: "19 Out 2024", valor: 3850000, icon: "apartment" },
-    { id: 5, titulo: "Resgate Parcial de Depósito", entidade: "Depósito BFA", tipo: "saida", estado: "Concluído", data: "15 Out 2024", valor: -5000000, icon: "currency_exchange" },
-    { id: 6, titulo: "Manutenção & Condomínio", entidade: "Talatona Corporate", tipo: "despesa", estado: "Debitado", data: "10 Out 2024", valor: -620000, icon: "build" }
-  ],
   tipos: {
     rendimento: { label: "Rendimento", cls: "pos" },
     entrada: { label: "Entrada de Capital", cls: "pos" },
     saida: { label: "Saída de Capital", cls: "neg" },
     despesa: { label: "Despesa", cls: "neg" }
   },
-  relatorio: {
-    patrimonio: 184500000, crescimento: 14.8, rentabilidade: 28340000,
-    encargos: 4820000, roi: 15.35, eficiencia: 82.9,
-    meses: [
-      { nome: "Jan / Fev 2024", rend: 4500000, desp: 650000 },
-      { nome: "Mar / Abr 2024", rend: 6200000, desp: 790000 },
-      { nome: "Mai / Jun 2024", rend: 7900000, desp: 950000 },
-      { nome: "Jul / Ago 2024 (Cupão OT-NR)", rend: 9740000, desp: 1430000 }
-    ],
-    carteira: [
-      { nome: "Dívida Pública (Obrigações do Tesouro)", nota: "Isenção Total de IAC (Art. 11º Cód. IAC)", valor: 114390000, cor: "#10243a" },
-      { nome: "Ativos Imobiliários Comerciais", nota: "Regime IP Predial (15% Retenção)", valor: 51660000, cor: "#2563eb" },
-      { nome: "Participações Societárias & Agro", nota: "Incentivo PRODESI / Isenção Imp. Industrial", valor: 18450000, cor: "#16a34a" }
+  icons: { rendimento: "payments", entrada: "account_balance", saida: "currency_exchange", despesa: "receipt_long" },
+  classes: {
+    divida: { label: "Dívida Pública (Obrigações do Tesouro)", risco: "Baixo Risco (Soberano)", nota: "Isenção Total de IAC (Art. 11º Cód. IAC)", cor: "#10243a" },
+    imobiliario: { label: "Ativos Imobiliários Comerciais", risco: "Médio Risco (Real Estate)", nota: "Regime IP Predial (15% Retenção)", cor: "#2563eb" },
+    agro: { label: "Participações Societárias & Agro", risco: "Moderado / Agro", nota: "Incentivo PRODESI / Isenção Imp. Industrial", cor: "#16a34a" }
+  },
+  tiposEntidade: ["Sociedade Anónima", "Imobiliário Comercial", "Agronegócio", "Pessoa Singular", "Outro"],
+  demo: {
+    entidades: [
+      { id: 1, nome: "Grupo Atlântico S.A.", tipo: "Sociedade Anónima", nif: "5418290312" },
+      { id: 2, nome: "Talatona Corporate", tipo: "Imobiliário Comercial", nif: "5417003345" },
+      { id: 3, nome: "Plantio Café Kwanza", tipo: "Agronegócio", nif: "5419988120" }
     ],
     ativos: [
-      { sigla: "OT", nome: "Títulos do Tesouro OT-NR", info: "Maturidade: Nov 2028 • Emissão BNA", risco: "Baixo Risco (Soberano)", valor: 114390000 },
-      { sigla: "TC", nome: "Edifício Talatona Corporate", info: "Renda Comercial • Luanda Sul", risco: "Médio Risco (Real Estate)", valor: 51660000 },
-      { sigla: "FK", nome: "Fazenda Kwanza", info: "Agronegócio • Cuanza Sul", risco: "Moderado / Agro", valor: 18450000 }
+      { id: 1, eid: 1, nome: "Títulos do Tesouro OT-NR", classe: "divida", info: "Maturidade: Nov 2028 • Emissão BNA", valor: 114390000, taxa: 12.5 },
+      { id: 2, eid: 2, nome: "Edifício Talatona Corporate", classe: "imobiliario", info: "Renda Comercial • Luanda Sul", valor: 51660000, taxa: 9 },
+      { id: 3, eid: 3, nome: "Fazenda Kwanza", classe: "agro", info: "Agronegócio • Cuanza Sul", valor: 18450000, taxa: 6 }
+    ],
+    movs: [
+      { id: 1, eid: 1, titulo: "Cupão OT-NR 2027", tipo: "rendimento", valor: 2400000, dias: 0 },
+      { id: 2, eid: 3, titulo: "Aporte de Tesouraria", tipo: "entrada", valor: 15000000, dias: 8 },
+      { id: 3, eid: 1, titulo: "Comissão de Custódia BODIVA", tipo: "despesa", valor: -350000, dias: 9 },
+      { id: 4, eid: 2, titulo: "Renda Edifício Luanda Sul", tipo: "rendimento", valor: 3850000, dias: 11 },
+      { id: 5, eid: 1, titulo: "Resgate Parcial de Depósito", tipo: "saida", valor: -5000000, dias: 15 },
+      { id: 6, eid: 2, titulo: "Manutenção & Condomínio", tipo: "despesa", valor: -620000, dias: 20 }
     ]
-  },
-  entidades: [
-    { nome: "Grupo Atlântico S.A.", tipo: "Sociedade Anónima", nif: "5418290312" },
-    { nome: "Talatona Corporate", tipo: "Imobiliário Comercial", nif: "5417003345" },
-    { nome: "Plantio Café Kwanza", tipo: "Agronegócio", nif: "5419988120" }
-  ]
+  }
 };
