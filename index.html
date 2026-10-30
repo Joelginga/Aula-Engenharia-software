@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InvestControl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#movimentos"><span class="logo">IC</span><span>InvestControl</span></a>
+    <button class="icon-btn bell" aria-label="Notificações"><span class="ms">notifications</span><i class="dot"></i></button>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <nav class="bottom-nav" aria-label="Principal">
+    <a href="#dashboard" data-route="dashboard"><span class="ms">grid_view</span>Dashboard</a>
+    <a href="#investimentos" data-route="investimentos"><span class="ms">account_balance</span>Investimentos</a>
+    <a href="#movimentos" data-route="movimentos"><span class="ms">sync_alt</span>Movimentos</a>
+    <a href="#entidades" data-route="entidades"><span class="ms">domain</span>Entidades</a>
+    <a href="#definicoes" data-route="definicoes"><span class="ms">menu</span>Mais</a>
+  </nav>
+
+  <div id="modal" class="modal" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
