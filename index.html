@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>InvestControl</title>
+  <title>JJJ INVESTCONTROL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extra.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#movimentos"><span class="logo">IC</span><span>InvestControl</span></a>
-    <button class="icon-btn bell" aria-label="Notificações"><span class="ms">notifications</span><i class="dot"></i></button>
+    <a class="brand" href="#dashboard"><span class="logo">JJJ</span><span class="brand-name">INVESTCONTROL</span></a>
+    <button class="icon-btn bell" id="bell" aria-label="Notificações"><span class="ms">notifications</span><i class="dot" id="badge" hidden>0</i></button>
   </header>
 
   <main id="app" tabindex="-1"></main>
@@ -23,6 +24,7 @@
     <a href="#movimentos" data-route="movimentos"><span class="ms">sync_alt</span>Movimentos</a>
     <a href="#entidades" data-route="entidades"><span class="ms">domain</span>Entidades</a>
     <a href="#definicoes" data-route="definicoes"><span class="ms">menu</span>Mais</a>
+    <div class="side-user" id="side-user"></div>
   </nav>
 
   <div id="modal" class="modal" hidden></div>
